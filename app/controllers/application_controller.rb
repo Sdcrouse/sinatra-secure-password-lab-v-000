@@ -45,7 +45,8 @@ class ApplicationController < Sinatra::Base
 
   post "/login" do
     ##your code here
-    user = User.find_by(username: params[:username])
+    user = User.find_by(username: params[:username]) # I think this works regardless of whether I use User or User.all
+    binding.pry
     
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
